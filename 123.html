@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="fileUploader" type='file' onchange='openFile(event)'><br>
+  <img id='output'>
+  <div id="here"></div>
+<script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    
+  //   let fileUploader = document.querySelector('#fileUploader')
+  //   let fileReader = new FileReader()
+  //   fileUploader.addEventListener('change',(e)=>{
+  //     let file = e.target
+  //   })
+
+    openFile = function(event) {
+      var input = event.target;
+  
+      var reader = new FileReader();
+      reader.onload = function(){
+        var text = reader.result;
+        document.querySelector('#here').textContent = text
+        // console.log(reader.result.substring(0, 200));
+      };
+      reader.readAsText(input.files[0]);
+    };
+  })
+</script>
+
+</body>
+</html>
